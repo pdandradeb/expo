@@ -54,6 +54,7 @@ export default class ExpoApisScreen extends React.Component {
       'Constants',
       'Contacts',
       'Device',
+      'DevMenu',
       'DocumentPicker',
       'FacebookLogin',
       'FaceDetector',
