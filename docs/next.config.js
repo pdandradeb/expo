@@ -16,6 +16,9 @@ module.exports = {
       test: /.mdx?$/, // load both .md and .mdx files
       use: [options.defaultLoaders.babel, '@mdx-js/loader', join(__dirname, './common/md-loader')],
     });
+    config.node = {
+      fs: 'empty',
+    };
     return config;
   },
   async exportPathMap(defaultPathMap, { dev, dir, outDir }) {
