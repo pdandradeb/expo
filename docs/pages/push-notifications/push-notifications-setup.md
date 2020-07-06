@@ -33,18 +33,19 @@ registerForPushNotificationsAsync = async () => {
     const token = await Notifications.getExpoPushTokenAsync();
     /* @end */
     console.log(token);
-    this.setState({ expoPushToken: token });
+    const expoPushToken = await Notifications.getExpoPushTokenAsync();
+    this.setState({ expoPushToken: expoPushToken.data });
   } else {
     alert('Must use physical device for Push Notifications');
   }
 
   /* @info On Android, we need to specify a channel. Find out more specifics in the expo-notifications documentation. */
   if (Platform.OS === 'android') {
-    Notifications.createChannelAndroidAsync('default', {
+    Notifications.setNotificationChannelAsync('default', {
       name: 'default',
-      sound: true,
-      priority: 'max',
-      vibrate: [0, 250, 250, 250],
+      importance: Notifications.AndroidImportance.MAX,
+      vibrationPattern: [0, 250, 250, 250],
+      lightColor: '#FF231F7C',
     });
   }
   /* @end */
