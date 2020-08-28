@@ -24,7 +24,7 @@ Creating a channel is easy -- before you create a local notification (or receive
 
 ```javascript
 if (Platform.OS === 'android') {
-  Notifications.createChannelAndroidAsync('chat-messages', {
+  Notifications.setNotificationChannelAsync('chat-messages', {
     name: 'Chat messages',
     sound: true,
   });
@@ -83,7 +83,7 @@ You might change it to something like this:
 componentDidMount() {
   // ...
   if (Platform.OS === 'android') {
-    Notifications.createChannelAndroidAsync('reminders', {
+    Notifications.setNotificationChannelAsync('reminders', {
       name: 'Reminders',
       priority: 'max',
       vibrate: [0, 250, 250, 250],
